@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd15ef39a72f435197a7626104ed30b8" Name="Diagram1">
+        <EntityTypeShape EntityType="NewsManvaModel.Advertisement" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.Category" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.Comment" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.Contact" Width="1.5" PointX="10" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.Newsletter" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.Post" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.Sub_Category" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.Tag" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsManvaModel.User" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="NewsManvaModel.FK_Post_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsManvaModel.FK_Sub_Category_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsManvaModel.FK_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsManvaModel.FK_Contact_User" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsManvaModel.FK_Post_Newsletter" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsManvaModel.FK_Post_Sub_Category" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

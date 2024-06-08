@@ -1,0 +1,768 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.LastPost.Category.name;
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<div class="container-fluid populer-news py-2">
+    <div class="container py-2">
+        <div class="tab-class mb-4">
+            <div class="row g-4">
+                <div class="col-lg-8 col-xl-9">
+                    <div class="d-flex flex-column flex-md-row justify-content-md-between border-bottom mb-4">
+                        <h1 class="mb-1">@ViewBag.Title</h1>
+                    </div>
+                    <div class="tab-content mb-4">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                <div class="col-lg-8">
+                                    <div class="position-relative rounded overflow-hidden">
+                                        <img src="@ViewBag.LastPostImage" class="img-zoomin img-fluid rounded w-100" alt="">
+                                        <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">
+                                            @ViewBag.LastPost.Category.name
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <small>
+                                                <i class="fa fa-eye" style="font-size: 10pt; font-weight: 400">
+                                                    <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 10pt; font-weight: 400">@ViewBag.LastPost.views views</span>
+                                                </i>
+                                            </small>
+                                            <small class="text-body d-block">
+                                                @*<i class="fas fa-calendar-alt me-1" style="font-size: 10pt; font-weight: 400">
+                                                        <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 10pt; font-weight: 400">@ViewBag.RecordDate.ToString("dd-MM-yyyy hh:mm:ss")</span>
+                                                    </i>*@
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="my-4">
+                                        @Html.ActionLink((string)ViewBag.LastPost.title, "Details", "Posts", new { id = ViewBag.LastPost.id }, new { @class = "display-6 text-dark mb-0 link-hover" })
+                                    </div>
+                                    <!--<div class="d-flex justify-content-between">
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> 06 minute read</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> 3.5k Views</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-comment-dots"></i> 05 Comment</a>
+                                        <a href="#" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>
+                                    </div>-->
+                                    <p class="my-4">
+                                        @Html.ActionLink((string)ViewBag.Slug, "Details", "Posts", new { id = ViewBag.LastPost.id }, new { @class = "text-dark mb-0 link-hover" })
+                                    </p>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row g-4">
+
+                                        @foreach (var item in ViewBag.rightSideNews)
+                                        {
+                                            <div class="col-12">
+                                                <div class="row g-4 align-items-center">
+                                                    <div class="col-5">
+                                                        <div class="overflow-hidden rounded">
+                                                            @if (@item.image != null)
+                                                            {
+                                                                var base64 = Convert.ToBase64String(@item.image);
+                                                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+
+                                                                <img alt="@item.image" src='@imgsrc' class="img-zoomin img-fluid rounded w-100" />
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <div class="features-content d-flex flex-column">
+                                                            <p class="text-uppercase mb-0" style="font-size: 14pt">@item.Category.name</p>
+                                                            @Html.ActionLink((string)@item.title, "Details", "Posts", new { id = @item.id }, new { @class = "h5 mb-0" })
+                                                            <small class="text-body d-block" style="font-size: 9pt"><i class="fas fa-calendar-alt me-1"></i>@item.RecordDate.ToString("dd-MM-yyyy")</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-8">
+                                    <div class="position-relative rounded overflow-hidden">
+                                        <img src="~/assest/img/image-767799-1706328898.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                        <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">
+                                            ম্যাগাজিন
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <a href="#" class="h4">শোয়েবের তৃতীয় বিয়েতে বিব্রত ছেলে ইজহান, যে সিদ্ধান্ত সানিয়ার</a>
+                                    </div>
+                                    <p class="mt-4">
+                                        সানিয়া মির্জার সঙ্গে বিবাহবিচ্ছেদের মাস কয়েকের মধ্যেই তৃতীয়বার বিয়ে করলেন পাক ক্রিকেটার শোয়েব মালিক। গত শনিবার সামাজিক যোগাযোগমাধ্যমে বিয়ের কথা নিজেই জানান এ ক্রিকেট তারকা।
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <!--<a href="#" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> 06 minute read</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> 3.5k Views</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-comment-dots"></i> 05 Comment</a>
+                                        <a href="#" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row g-4">
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-767275-1706209812.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2"> ম্যাগাজিন</p>
+                                                        <a href="#" class="h6">অসুস্থ ছেলেকে নিয়ে যে পোস্ট দিলেন রাজ</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-767500-1706256377.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2"> ম্যাগাজিন</p>
+                                                        <a href="#" class="h6">৬ বছর আগে ভক্তকে দেওয়া কথা রাখলেন সালমান!</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-767223-1706198480.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2"> ম্যাগাজিন</p>
+                                                        <a href="#" class="h6">ঢাকার মঞ্চে আবারও ‘সিদ্ধার্থ’, ৫ দিনে ৭টি শো</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-766780-1706092567.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2"> ম্যাগাজিন</p>
+                                                        <a href="#" class="h6">বিপদমুক্ত ফারুকী, বিশ্রাম নিয়ে কাজে ফিরবেন: তিশা</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-766090-1705938534.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2"> ম্যাগাজিন</p>
+                                                        <a href="#" class="h6">আফরান নিশোর ছবি দেখে লাফিয়ে উঠেন স্বস্তিকা!</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-3" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-8">
+                                    <div class="position-relative rounded overflow-hidden">
+                                        <img src="~/assest/img/3117.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                        <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">
+                                            রাজনীতি
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <a href="#" class="h4">প্রধানমন্ত্রীকে অভিনন্দন জানিয়েছে হাঙ্গেরি ও কিরগিজস্তান</a>
+                                    </div>
+                                    <p class="mt-4">
+                                        কিরগিজস্তানের প্রেসিডেন্ট সাদির জাপারভ ও হাঙ্গেরির প্রধানমন্ত্রী ভিক্টর অরবান সম্প্রতি বাংলাদেশের প্রধানমন্ত্রী হিসাবে শেখ হাসিনা আবারও নির্বাচিত হওয়ায় শুভেচ্ছা ও অভিনন্দন জানিয়েছেন। পৃথক বার্তায় তারা বাংলাদেশের ...
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <!--<a href="#" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> 06 minute read</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> 3.5k Views</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-comment-dots"></i> 05 Comment</a>
+                                        <a href="#" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row g-4">
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/3119.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">রাজনীতি</p>
+                                                        <a href="#" class="h6">জাতীয় পার্টিতে আবারও ভাঙনের সুর</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/3120.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">রাজনীতি</p>
+                                                        <a href="#" class="h6">নতুন পরিকল্পনায় পুনরুদ্যমে আন্দোলনের মাঠে বিএনপি</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/3111.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">রাজনীতি</p>
+                                                        <a href="#" class="h6">পাকিস্তানের নির্বাচনে ব্যাট এখন নওয়াজ শরীফের হাতে</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/3114.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">রাজনীতি</p>
+                                                        <a href="#" class="h6">সৌদি আরবে এবার মদের দোকান</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-4" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-8">
+                                    <div class="position-relative rounded overflow-hidden">
+                                        <img src="~/assest/img/image-685678-1686674647.jpeg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                        <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">
+                                            প্রযুক্তি
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <a href="#" class="h4">গুগলের সফটওয়্যার ইঞ্জিনিয়ার হলেন রাবি শিক্ষার্থী ফারহান</a>
+                                    </div>
+                                    <p class="mt-4">
+                                        বিশ্বের সর্ববৃহৎ টেক জায়ান্ট গুগলে সফটওয়্যার ইঞ্জিনিয়ার হিসেবে কাজের প্রস্তাব পেয়েছেন রাজশাহী বিশ্ববিদ্যালয়ের (রাবি) শিক্ষার্থী ফারহান শাহরিয়ার শুভ। তিনি বিশ্ববিদ্যালয়ের কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং বিভাগের ২৫তম ব্যাচের ২০১৬-১৭ শিক্ষাবর্ষের শিক্ষার্থী।
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <!--<a href="#" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> 06 minute read</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> 3.5k Views</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-comment-dots"></i> 05 Comment</a>
+                                        <a href="#" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row g-4">
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-665791-1681578969.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2"> প্রযুক্তি</p>
+                                                        <a href="#" class="h6">দেশজুড়ে ফাইভজি নেটওয়ার্ক শক্তিশালী করছে টেলিটক</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-763262-1705308262.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">প্রযুক্তি</p>
+                                                        <a href="#" class="h6">মুদ্রার চেয়েও ছোট ব্যাটারি, এক চার্জে ফোন চলবে ৫০ বছর</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-756124-1703661993.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">প্রযুক্তি</p>
+                                                        <a href="#" class="h6">মোবাইল হ্যাকিং বুঝবেন কীভাবে, প্রতিরোধে যা করবেন </a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-754176-1703239010.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">প্রযুক্তি</p>
+                                                        <a href="#" class="h6">ফোনের চার্জ দ্রুত ফুরাচ্ছে, সমাধান নিয়ে এলো অ্যাপল</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-765239-1705736768.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">প্রযুক্তি</p>
+                                                        <a href="#" class="h6">যেভাবে হোয়াটসঅ্যাপে কল লিংক তৈরি করবেন</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-5" class="tab-pane fade show p-0">
+                            <div class="row g-4">
+                                <div class="col-lg-8">
+                                    <div class="position-relative rounded overflow-hidden">
+                                        <img src="~/assest/img/image-767845-1706352908.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                        <div class="position-absolute text-white px-4 py-2 bg-primary rounded" style="top: 20px; right: 20px;">
+                                            ফ্যাশন
+                                        </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <a href="#" class="h4">অভিনয়ের চেয়ে শুভেচ্ছাদূতের কাজ নিয়েই ব্যস্ত নুসরাত ফারিয়া</a>
+                                    </div>
+                                    <p class="mt-4">
+                                        ছিলেন উপস্থাপিকা। এরপর আসলেন অভিনয়ে। হলেন চিত্রনায়িকা। কাজ করছেন ঢাকা ও কলকাতা দুই ফিল্ম ইন্ডাস্ট্রিতেই। কিন্তু এ নায়িকা অভিনীত হিট সিনেমার নাম খুব একটা জোরে উচ্চারিত হবে না কারো গলায়।
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <!--<a href="#" class="text-dark link-hover me-3"><i class="fa fa-clock"></i> 06 minute read</a>
+                                        <a href="#"><a href="#" class="text-dark link-hover me-3"><i class="fa fa-eye"></i> 3.5k Views</a>
+                                        <a href="#" class="text-dark link-hover me-3"><i class="fa fa-comment-dots"></i> 05 Comment</a>
+                                        </a> href="#" class="text-dark link-hover"><i class="fa fa-arrow-up"></i> 1.5k Share</a>-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row g-4">
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/image-766593-1706074506.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">ফ্যাশন</p>
+                                                        <a href="#" class="h6">শুধু অভিনয় নিয়ে ব্যস্ত থাকতে পারব না: অপু বিশ্বাস</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/rashmika (1).jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">ফ্যাশন</p>
+                                                        <a href="#" class="h6">রাশমিকার ডিপফেক ভিডিও ভাইরাল, কারণ জানালেন যুবক </a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row g-4 align-items-center">
+                                                <div class="col-5">
+                                                    <div class="overflow-hidden rounded">
+                                                        <img src="~/assest/img/deef5a2af1f53821cce54dd246e6bd48-65b46a334d35b.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="features-content d-flex flex-column">
+                                                        <p class="text-uppercase mb-2">ফ্যাশন</p>
+                                                        <a href="#" class="h6">বহুব্রীহি ব্যান্ডের প্রথম অ্যালবাম</a>
+                                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom mb-4">
+                        <h2 class="my-4">সর্বাধিক দেখা খবর</h2>
+                    </div>
+                    <div class="whats-carousel owl-carousel">
+                        <div class="latest-news-item">
+                            <div class="bg-light rounded">
+                                <div class="rounded-top overflow-hidden">
+                                    <img src="~/assest/img/3114.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
+                                </div>
+                                <div class="d-flex flex-column p-4">
+                                    <a href="#" class="h4">সৌদি আরবে এবার মদের দোকান</a>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" class="small text-body link-hover">by Willium Smith</a>
+                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="whats-item">
+                            <div class="bg-light rounded">
+                                <div class="rounded-top overflow-hidden">
+                                    <img src="~/assest/img/3117.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
+                                </div>
+                                <div class="d-flex flex-column p-4">
+                                    <a href="#" class="h4">প্রধানমন্ত্রীকে অভিনন্দন জানিয়েছে হাঙ্গেরি ও কিরগিজস্তান</a>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" class="small text-body link-hover">by Willium Smith</a>
+                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="whats-item">
+                            <div class="bg-light rounded">
+                                <div class="rounded-top overflow-hidden">
+                                    <img src="~/assest/img/3109.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
+                                </div>
+                                <div class="d-flex flex-column p-4">
+                                    <a href="#" class="h4">বেনাপোল বন্দরে যাত্রী বাড়লেও বাড়েনি সুযোগ-সুবিধা</a>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" class="small text-body link-hover">by Willium Smith</a>
+                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="whats-item">
+                            <div class="bg-light rounded">
+                                <div class="rounded-top overflow-hidden">
+                                    <img src="~/assest/img/3111.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
+                                </div>
+                                <div class="d-flex flex-column p-4">
+                                    <a href="#" class="h4">পাকিস্তানের নির্বাচনে ব্যাট এখন নওয়াজ শরীফের হাতে</a>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" class="small text-body link-hover">by Willium Smith</a>
+                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="whats-item">
+                            <div class="bg-light rounded">
+                                <div class="rounded-top overflow-hidden">
+                                    <img src="~/assest/img/3107.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="">
+                                </div>
+                                <div class="d-flex flex-column p-4">
+                                    <a href="#" class="h4">কানাডা ছাত্র ভিসার সংখ্যা কমালে বাংলাদেশিদের ওপর প্রভাব পড়বে না</a>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="#" class="small text-body link-hover">by Willium Smith</a>
+                                        <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 lifestyle">
+                        <div class="border-bottom mb-4">
+                            <h1 class="mb-4">লাইফ স্টাইল</h1>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="lifestyle-item rounded">
+                                    <img src="~/assest/img/image-743406-1700729089.jpeg" class="img-fluid w-100 rounded" alt="">
+                                    <div class="lifestyle-content">
+                                        <div class="mt-auto">
+                                            <a href="#" class="h4 text-white link-hover">কীভাবে মধুর হবে বউ-শাশুড়ির সম্পর্ক?</a>
+                                            <div class="d-flex justify-content-between mt-4">
+                                                <a href="#" class="small text-white link-hover">By Willium Smith</a>
+                                                <small class="text-white d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="lifestyle-item rounded">
+                                    <img src="~/assest/img/image-767513-1706259965.jpg" class="img-fluid w-100 rounded" alt="">
+                                    <div class="lifestyle-content">
+                                        <div class="mt-auto">
+                                            <a href="#" class="h4 text-white link-hover">আঙুলে ছিদ্র ছাড়াই রক্তের গ্লুকোজ মাপবে যে যন্ত্র</a>
+                                            <div class="d-flex justify-content-between mt-4">
+                                                <a href="#" class="small text-white link-hover">By Willium Smith</a>
+                                                <small class="text-white d-block"><i class="fas fa-calendar-alt me-1"></i> Dec 9, 2024</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="p-3 rounded border">
+                                <h4 class="mb-4">Stay Connected</h4>
+                                <div class="row g-4">
+                                    <div class="col-12">
+                                        <a href="#" class="w-100 rounded btn btn-primary d-flex align-items-center p-3 mb-2">
+                                            <i class="fab fa-facebook-f btn btn-light btn-square rounded-circle me-3"></i>
+                                            <span class="text-white">13,977 Fans</span>
+                                        </a>
+                                        <a href="#" class="w-100 rounded btn btn-danger d-flex align-items-center p-3 mb-2">
+                                            <i class="fab fa-twitter btn btn-light btn-square rounded-circle me-3"></i>
+                                            <span class="text-white">21,798 Follower</span>
+                                        </a>
+                                        <a href="#" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-2">
+                                            <i class="fab fa-youtube btn btn-light btn-square rounded-circle me-3"></i>
+                                            <span class="text-white">7,999 Subscriber</span>
+                                        </a>
+                                        <a href="#" class="w-100 rounded btn btn-dark d-flex align-items-center p-3 mb-2">
+                                            <i class="fab fa-instagram btn btn-light btn-square rounded-circle me-3"></i>
+                                            <span class="text-white">19,764 Follower</span>
+                                        </a>
+                                        <a href="#" class="w-100 rounded btn btn-secondary d-flex align-items-center p-3 mb-2">
+                                            <i class="bi-cloud btn btn-light btn-square rounded-circle me-3"></i>
+                                            <span class="text-white">31,999 Subscriber</span>
+                                        </a>
+                                        <a href="#" class="w-100 rounded btn btn-warning d-flex align-items-center p-3 mb-4">
+                                            <i class="fab fa-dribbble btn btn-light btn-square rounded-circle me-3"></i>
+                                            <span class="text-white">37,999 Subscriber</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h4 class="my-4">জনপ্রিয় খবর</h4>
+                                <div class="row g-4">
+                                    <div class="col-12">
+                                        <div class="row g-4 align-items-center features-item">
+                                            <div class="col-4">
+                                                <div class="rounded-circle position-relative">
+                                                    <div class="overflow-hidden rounded-circle">
+                                                        <img src="~/assest/img/3118.jpg" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                                    </div>
+                                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="features-content d-flex flex-column">
+                                                    <p class="text-uppercase mb-2">খেলাধুলা</p>
+                                                    <a href="#" class="h6">
+                                                        অনূর্ধ্ব -১৯ বিশ্বকাপের যুক্তরাষ্ট্রকে উড়িয়ে দিয়েছে বাংলাদেশ
+                                                    </a>
+                                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> December 9, 2024</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row g-4 align-items-center features-item">
+                                            <div class="col-4">
+                                                <div class="rounded-circle position-relative">
+                                                    <div class="overflow-hidden rounded-circle">
+                                                        <img src="~/assest/img/chatGPT-1.jpg" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                                    </div>
+                                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="features-content d-flex flex-column">
+                                                    <p class="text-uppercase mb-2">প্রযুক্তি</p>
+                                                    <a href="#" class="h6">
+                                                        এসেছে গুগলের কৃত্রিম বুদ্ধিমত্তা জেমিনি
+                                                    </a>
+                                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> December 9, 2024</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row g-4 align-items-center features-item">
+                                            <div class="col-4">
+                                                <div class="rounded-circle position-relative">
+                                                    <div class="overflow-hidden rounded-circle">
+                                                        <img src="~/assest/img/image-767845-1706352908.jpg" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                                    </div>
+                                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="features-content d-flex flex-column">
+                                                    <p class="text-uppercase mb-2">ফ্যাশন</p>
+                                                    <a href="#" class="h6">
+                                                        অভিনয়ের চেয়ে শুভেচ্ছাদূতের কাজ নিয়েই ব্যস্ত নুসরাত ফারিয়া
+                                                    </a>
+                                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> December 9, 2024</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row g-4 align-items-center features-item">
+                                            <div class="col-4">
+                                                <div class="rounded-circle position-relative">
+                                                    <div class="overflow-hidden rounded-circle">
+                                                        <img src="~/assest/img/image-767513-1706259965.jpg" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                                    </div>
+                                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="features-content d-flex flex-column">
+                                                    <p class="text-uppercase mb-2">লাইফ স্টাইল</p>
+                                                    <a href="#" class="h6">
+                                                        আঙুলে ছিদ্র ছাড়াই রক্তের গ্লুকোজ মাপবে যে যন্ত্র
+                                                    </a>
+                                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> December 9, 2024</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <a href="#" class="link-hover btn border border-primary rounded-pill text-dark w-100 py-3 mb-4">View More</a>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="border-bottom my-3 pb-3">
+                                            <h4 class="mb-0">Trending Tags</h4>
+                                        </div>
+                                        <ul class="nav nav-pills d-inline-flex text-center mb-4">
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">লাইফ স্টাইল</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">খেলাধুলা</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">প্রযুক্তি</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">ম্যাগাজিন</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">খেলা</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">সিনেমা</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">ভ্রমণ</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item mb-3">
+                                                <a class="d-flex py-2 bg-light rounded-pill me-2" href="#">
+                                                    <span class="text-dark link-hover" style="width: 90px;">বিশ্ব</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="position-relative banner-2">
+                                            <img src="~/assest/img/banner-2.jpg" class="img-fluid w-100 rounded" alt="">
+                                            <div class="text-center banner-content-2">
+                                                <h6 class="mb-2">The Most Populer</h6>
+                                                <p class="text-white mb-2">News & Magazine WP Theme</p>
+                                                <a href="#" class="btn btn-primary text-white px-4">Shop Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
